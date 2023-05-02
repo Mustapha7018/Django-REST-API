@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from college import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('college/', views.student_list)
+    path('college/', views.student_list),
+    path('college/<int:id>', views.student_detail),
 ]
+
+# suffix a url using .json
+urlpatterns = format_suffix_patterns(urlpatterns)
